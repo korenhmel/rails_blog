@@ -1,5 +1,7 @@
 Blog::Application.routes.draw do
   get "home/index"
+  get "terms" => "contacts#terms"
+  get "about" => "contacts#about"
   # get "home/contacts"
   # get "home/info"
   # get "contacts"=> "contacts#new" - альтернатива переопределения  url 'contacts/new' в 'contacts'
