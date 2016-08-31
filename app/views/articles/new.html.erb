@@ -2,8 +2,12 @@
 <%= form_for :article, url: articles_path  do |f| %>
   <p>
     <% if @article %>
-    <%= @article.errors.full_messages %>
-      <% end %>
+    <% @article.errors.full_messages.each do |msg| %>
+      <ul>
+        <li><%= msg %></li>
+      </ul>
+    <% end %>
+  <% end %>
   </p>
   <p>
     <%= f.label :title %><br/>
