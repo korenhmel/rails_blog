@@ -8,7 +8,12 @@ class ArticlesController < ApplicationController
     else
       render action: 'new'
     end
+
   end
+  def index
+    @articles_list = Article.all
+  end
+  private
   def contact_params
     params.require(:article).permit(:title, :text)
   end
