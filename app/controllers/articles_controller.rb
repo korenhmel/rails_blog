@@ -4,6 +4,9 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
   end
+  def edit
+
+  end
   def create
     @article = Article.new(contact_params)
     if @article.valid?

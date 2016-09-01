@@ -1,5 +1,12 @@
 <h1>All articles</h1>
 
 <% @articles_list.each do |name|%>
-<p><%= name.title %> </p>
+<h2><%= name.title %> </h2>
+  <p><%= name.text %></p>
+  <p>
+    <%= link_to 'Show', article_path(name) %> |
+    <%= link_to 'edit', edit_article_path(name) %>
+    <!--<a href="/articles/<%= name.id %>" >Show</a>-->
+  </p>
+  <hr/>
  <% end %>
