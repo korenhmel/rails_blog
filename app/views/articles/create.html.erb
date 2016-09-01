@@ -2,3 +2,10 @@
 <p>
   Thanks for the article!!!
 </p>
+<!--Один из способов ссылки, при изменении маршрута ссылка сломается-->
+<!--<a href="/show_articles" >Show all articless</a> -->
+
+ <!--второй способ более правильный в rails, хотя можно пользоваться и первым.
+ можно посмотреть маршруты в консоли при помощи команды rake routes  берем из него  префикс ведущий на ресурс и добавляем _path прим. префикс show_articles + _path
+   получаем show_articles_path -->
+<%= link_to 'Show all articless', show_articles_path %>
