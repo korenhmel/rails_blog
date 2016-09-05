@@ -12,6 +12,10 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     if @article.update(article_params)
       # 'возвращает  созданный ресурс в странице show.html.erb'
+      # 'отличие между redirect_to и render в том что редирект возвращает страницу после
+      # какого то выполненного действия, тоесть данные были сохранены в базе данных и
+      # информация  в переменной  @article  уже не нужна, render же напротив не сбрасывает
+      # данные с переменной.'
       redirect_to @article
     else
       render action: 'edit'
