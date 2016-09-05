@@ -17,6 +17,11 @@ class ArticlesController < ApplicationController
       render action: 'edit'
     end
   end
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+    redirect_to action: :index
+  end
 
   def create
     @article = Article.new(article_params)
@@ -26,6 +31,7 @@ class ArticlesController < ApplicationController
     else
       render action: 'new'
     end
+
 
   end
   def index
