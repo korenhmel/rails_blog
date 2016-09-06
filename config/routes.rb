@@ -8,7 +8,9 @@ Blog::Application.routes.draw do
   # get "home/info"
   # get "contacts"=> "contacts#new" - альтернатива переопределения  url 'contacts/new' в 'contacts'
   resource :contacts, only: [:new, :create], path_names: {new:''}
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.
