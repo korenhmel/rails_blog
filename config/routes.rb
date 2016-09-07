@@ -9,7 +9,7 @@ Blog::Application.routes.draw do
   # get "contacts"=> "contacts#new" - альтернатива переопределения  url 'contacts/new' в 'contacts'
   resource :contacts, only: [:new, :create], path_names: {new:''}
   resources :articles do
-    resources :comments
+    resources :comments, only: [:create]
   end
 
 

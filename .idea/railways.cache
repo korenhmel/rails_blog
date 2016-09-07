@@ -1,0 +1,24 @@
+              Prefix Verb   URI Pattern                                       Controller#Action
+          home_index GET    /home/index(.:format)                             home#index
+               terms GET    /terms(.:format)                                  contacts#terms
+               about GET    /about(.:format)                                  contacts#about
+            articles GET    /articles(.:format)                               articles#new
+       show_articles GET    /show_articles(.:format)                          articles#index
+            contacts POST   /contacts(.:format)                               contacts#create
+        new_contacts GET    /contacts(.:format)                               contacts#new
+    article_comments GET    /articles/:article_id/comments(.:format)          comments#index
+                     POST   /articles/:article_id/comments(.:format)          comments#create
+ new_article_comment GET    /articles/:article_id/comments/new(.:format)      comments#new
+edit_article_comment GET    /articles/:article_id/comments/:id/edit(.:format) comments#edit
+     article_comment GET    /articles/:article_id/comments/:id(.:format)      comments#show
+                     PATCH  /articles/:article_id/comments/:id(.:format)      comments#update
+                     PUT    /articles/:article_id/comments/:id(.:format)      comments#update
+                     DELETE /articles/:article_id/comments/:id(.:format)      comments#destroy
+                     GET    /articles(.:format)                               articles#index
+                     POST   /articles(.:format)                               articles#create
+         new_article GET    /articles/new(.:format)                           articles#new
+        edit_article GET    /articles/:id/edit(.:format)                      articles#edit
+             article GET    /articles/:id(.:format)                           articles#show
+                     PATCH  /articles/:id(.:format)                           articles#update
+                     PUT    /articles/:id(.:format)                           articles#update
+                     DELETE /articles/:id(.:format)                           articles#destroy

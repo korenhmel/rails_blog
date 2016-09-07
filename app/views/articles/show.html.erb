@@ -1,7 +1,23 @@
 <h1><%= @article.title %></h1>
 <br>
 <p><%= @article.text %></p>
+<br>
 
+<style>
+  .colortext {
+    color: blue; /* Красный цвет выделения */
+  }
+</style>
+
+<%  @article.comments.all.each do |com| %>
+  <p ><b>
+<span class="colortext">  autor:</span></b>  <%= com.autor %> <br>
+  <span class="colortext">  comments:</span> <%= com.body %>
+  </p>
+  <hr>
+
+  <% end %>
+<br>
 <%= form_for([@article, @article.comments.build])  do |f| %>
   <p>
     <%= f.label :autor %><br/>
