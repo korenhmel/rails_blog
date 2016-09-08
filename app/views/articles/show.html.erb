@@ -8,16 +8,18 @@
     color: blue; /* Красный цвет выделения */
   }
 </style>
-
-<%  @article.comments.all.each do |com| %>
-  <p ><b>
-<span class="colortext">  autor:</span></b>  <%= com.autor %> <br>
-  <span class="colortext">  comments:</span> <%= com.body %>
+<h3>Comments</h3>
+<%  @article.comments.each do |com| %>
+  <p >
+<i><span class="colortext"><b> <%= com.autor %></b></span> said:  </i><br>
+  <%= com.body %>
   </p>
-  <hr>
+
 
   <% end %>
 <br>
+<!--<p> you can use the build method to add a record into a has_many relationship before either record has been saved.</p>-->
+  <h3>Add comments</h3>
 <%= form_for([@article, @article.comments.build])  do |f| %>
   <p>
     <%= f.label :autor %><br/>
