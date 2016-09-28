@@ -11,6 +11,11 @@
  *= require_self
  *= require_tree .
  */
+
+@import "bootstrap";
+
+input[type=submit] {@extend .btn; @extend .btn-success; }
+
 .field_with_errors input {
   border-color: red;
 }
