@@ -8,7 +8,7 @@
   </head>
   <body>
     <% if user_signed_in? %>
-      <%= current_user.email %> <%= link_to 'Sign out!', destroy_user_session_path, method: :delete %><br>
+      <%= current_user.inspect %> <%= link_to 'Sign out!', destroy_user_session_path, method: :delete %><br>
     <% else %>
       <%= link_to 'Sign in!', new_user_session_path %>
     <% end %>
