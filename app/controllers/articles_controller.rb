@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, only: [:new, :create]
 
   def new
   end
@@ -8,6 +8,13 @@ class ArticlesController < ApplicationController
   end
   def edit
     @article = Article.find(params[:id])
+    # if @article.user_id == nil
+    #   @article.user_id = current_user.id
+    #   elsif @article.user_id == current_user.id
+    #   @article
+    # else
+    #   @error = "The rights to edit this article only belongs to its owner."
+    # end
   end
 
   def update
@@ -43,8 +50,13 @@ class ArticlesController < ApplicationController
   def index
     @articles_list = Article.all
   end
+  def user
+    unless current_user == nil
+      curent_user.username.upcase
+    end
+  end
   private
   def article_params
-    params.require(:article).permit(:title, :text)
+    params.require(:article).permit(:title, :text, :user_id)
   end
 end

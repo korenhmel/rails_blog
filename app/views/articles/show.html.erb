@@ -3,34 +3,55 @@
 <p><%= @article.text %></p>
 <br>
 
+
 <style>
   .colortext {
     color: blue; /* Красный цвет выделения */
   }
 </style>
 <h3>Comments</h3>
-<%  @article.comments.each do |com| %>
-  <p >
-<i><span class="colortext"><b> <%= com.autor %></b></span> said:  </i><br>
-  <%= com.body %>
+<% @article.comments.each do |com| %>
+  <p>
+    <i><span class="colortext"><b> <%= com.autor %></b></span> said: <%= com.body %></i>
   </p>
+  <p><i>
+    <small>created at: <%= com.created_at %></small>
+  </i></p><br>
+
+<% end %>
+
+
+
+<br>
+<!--<p> you can use the build method to add a record into a has_many relationship before either record has been saved.</p>-->
+<h3>Add comments</h3>
+<% if current_user != nil %>
+  <%= form_for([@article, @article.comments.build]) do |f| %>
+
+    <p>
+      <%= f.text_field(:autor, value: current_user.username, type: "hidden") %>
+    </p>
+
+    <!--<p style="color: red"><%= flash[:error_current_user] %></p>-->
+
+
+    <p>
+      <%= f.label :comments %><br />
+      <%= f.text_area :body %>
+    </p>
+    <p>
+
+      <%= f.submit %>
+    </p>
 
 
   <% end %>
-<br>
-<!--<p> you can use the build method to add a record into a has_many relationship before either record has been saved.</p>-->
-  <h3>Add comments</h3>
-<%= form_for([@article, @article.comments.build])  do |f| %>
+<% else %>
+  <p style="color: red"> Чтобы написать комментарий к статье, перейдите по ссылке регистрации!!</p>
   <p>
-    <%= f.label :autor %><br/>
-    <%= f.text_field :autor %>
+    <%= link_to 'sign ip!', new_user_session_path  %> |
+    <%= link_to 'sign up!', new_user_registration_path  %>
   </p>
-  <p>
-    <%= f.label :body %><br/>
-    <%= f.text_area :body %>
-  </p>
-  <p>
 
-    <%= f.submit %>
-  </p>
 <% end %>
+<p><%= params.inspect %></p>
