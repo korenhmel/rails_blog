@@ -1,30 +1,31 @@
 <h1>Edit article</h1>
-<% if @article.user_id == current_user.id%>
-<%= form_for :article, url: article_path(@article ), method: :put  do |f| %>
-  <p>
-    <% if @article %>
-      <% @article.errors.full_messages.each do |msg| %>
-      <ul>
-        <li><%= msg %></li>
-      </ul>
+
+  <% if @article.user_id == current_user.id %>
+    <%= form_for :article, url: article_path(@article), method: :put do |f| %>
+      <p>
+        <% if @article %>
+          <% @article.errors.full_messages.each do |msg| %>
+          <ul>
+            <li><%= msg %></li>
+          </ul>
+        <% end %>
+      <% end %>
+      </p>
+      <p>
+        <%= f.label :title %><br />
+        <%= f.text_field :title %>
+      </p>
+      <p>
+        <%= f.label :text %><br />
+        <%= f.text_area :text %>
+      </p>
+
+      <p>
+
+        <%= f.submit %>
+      </p>
+
     <% end %>
+  <% else %>
+    <p style="color: red">You don't have permission to edit this article!!!</p>
   <% end %>
-  </p>
-  <p>
-    <%= f.label :title %><br/>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :text %><br/>
-    <%= f.text_area :text %>
-  </p>
-
-  <p>
-
-    <%= f.submit %>
-  </p>
-
-<% end %>
-<% else %>
-  <p style="color: red">You don't have permission to edit this article!!!</p>
-<% end %>
