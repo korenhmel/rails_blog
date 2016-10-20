@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :article do
     title "article title"
     text   "article text"
+
     # создаем фабрику с названием article_with_comments
     # для создания статьи с несколькими комментариями
   factory :article_with_comments do
