@@ -50,6 +50,7 @@ class ArticlesController < ApplicationController
   def index
     @articles_list = Article.all
   end
+
   def user
     unless current_user == nil
       curent_user.username.upcase
